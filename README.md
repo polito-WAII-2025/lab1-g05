@@ -16,3 +16,6 @@
 4. docker run -v \${PWD}/custom-parameters.yml:/app/custom-parameters.yml -v \${PWD}:/app route-analyzer
    <h4>
 
+
+<h3> In order to test the project run the following command:</h3>
+<h4> ./gradlew clean test </h4>
