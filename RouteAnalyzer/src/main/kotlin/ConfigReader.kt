@@ -17,6 +17,10 @@ object ConfigReader {
         if (!file.exists()) {
             throw IllegalArgumentException("❌ ERRORE: Il file di configurazione $filePath non esiste!")
         }
-        return Yaml.default.decodeFromString(Config.serializer(), file.readText())
+        return try {
+            Yaml.default.decodeFromString(Config.serializer(), file.readText())
+        } catch (e: Exception) {
+            throw IllegalArgumentException("❌ ERRORE: Il file $filePath ha un formato errato! Verifica la sintassi YAML.\n Dettaglio: ${e.message}")
+        }
     }
 }

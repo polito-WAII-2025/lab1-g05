@@ -61,7 +61,7 @@ fun mostFrequentedArea(waypoints: List<Waypoint>, radiusKm: Double): Pair<Waypoi
 fun waypointsOutsideGeofence(waypoints: List<Waypoint>, centerLat: Double, centerLon: Double, radiusKm: Double): List<Waypoint> {
     return waypoints.filter { wp ->
         GeoUtils.haversine(centerLat, centerLon, wp.latitude, wp.longitude) > radiusKm
-    }
+    }.distinctBy { it.latitude to it.longitude }
 }
 
 // Salva i risultati in output.json (con formattazione leggibile)
