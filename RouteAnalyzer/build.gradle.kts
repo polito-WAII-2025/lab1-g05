@@ -18,6 +18,8 @@ dependencies {
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.15.0")
     implementation("org.apache.commons:commons-math3:3.6.1")
     implementation("com.charleskorn.kaml:kaml:0.53.0")
+    testImplementation("org.junit.jupiter:junit-jupiter:5.9.2")
+    testImplementation("io.kotest:kotest-assertions-core:5.5.4")
 }
 
 tasks.test {
