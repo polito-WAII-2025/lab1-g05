@@ -2,6 +2,7 @@ plugins {
     kotlin("jvm") version "1.9.0"
     kotlin("plugin.serialization") version "1.9.0"  // Aggiungi questa riga
     id("com.github.johnrengelman.shadow") version "8.1.1"
+    application
 }
 
 
@@ -35,4 +36,8 @@ tasks.withType<com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar> {
     manifest {
         attributes["Main-Class"] = "RouteAnalyzerKt"
     }
+}
+
+application {
+    mainClass.set("RouteAnalyzerKt") // Assicurati che sia il nome giusto della classe principale
 }

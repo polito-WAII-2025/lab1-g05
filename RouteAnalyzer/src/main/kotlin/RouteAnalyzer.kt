@@ -14,21 +14,23 @@ data class Waypoint(val timestamp: Long, val latitude: Double, val longitude: Do
 
 @Serializable
 data class MaxDistanceFromStart(
-    @Contextual val waypoint: Waypoint,
+    val waypoint: Waypoint,
     val distanceKm: Double
 )
 
 @Serializable
 data class MostFrequentedArea(
-    @Contextual val centralWaypoint: Waypoint,
+    val centralWaypoint: Waypoint,
     val areaRadiusKm: Double,
     val entriesCount: Int
 )
 
 @Serializable
 data class WaypointsOutsideGeofence(
+    val centralWaypoint: Waypoint,
+    val areaRadiusKm: Double,
     val count: Int,
-    @Contextual val waypoints: List<Waypoint>
+    val waypoints: List<Waypoint>
 )
 
 // Calcola la distanza massima dal punto di partenza
@@ -58,18 +60,20 @@ fun mostFrequentedArea(waypoints: List<Waypoint>, radiusKm: Double): Pair<Waypoi
 }
 
 // Trova i waypoint fuori dal geo-fence
-fun waypointsOutsideGeofence(waypoints: List<Waypoint>, centerLat: Double, centerLon: Double, radiusKm: Double): List<Waypoint> {
-    return waypoints.filter { wp ->
+fun waypointsOutsideGeofence(waypoints: List<Waypoint>, centerLat: Double, centerLon: Double, radiusKm: Double): WaypointsOutsideGeofence {
+    var outWaypointsList = waypoints.filter { wp ->
         GeoUtils.haversine(centerLat, centerLon, wp.latitude, wp.longitude) > radiusKm
     }.distinctBy { it.latitude to it.longitude }
+    val centralWaypoint = Waypoint(0, centerLat, centerLon)
+    return WaypointsOutsideGeofence(centralWaypoint, radiusKm, outWaypointsList.size, outWaypointsList)
 }
 
 // Salva i risultati in output.json (con formattazione leggibile)
-fun saveResultsToJson(outputPath: String, maxDist: Pair<Waypoint, Double>, freqArea: Pair<Waypoint, Int>, outWaypoints: List<Waypoint>) {
+fun saveResultsToJson(outputPath: String, maxDist: Pair<Waypoint, Double>, freqArea: Pair<Waypoint, Int>, outWaypoints: WaypointsOutsideGeofence) {
     val outputData = OutputData(
         maxDistanceFromStart = MaxDistanceFromStart(maxDist.first, maxDist.second),
         mostFrequentedArea = MostFrequentedArea(freqArea.first, 0.5, freqArea.second),
-        waypointsOutsideGeofence = WaypointsOutsideGeofence(outWaypoints.size, outWaypoints)
+        waypointsOutsideGeofence = outWaypoints
     )
 
     val json = Json { prettyPrint = true }  // 🔹 Aggiunto per formattare il JSON
@@ -84,7 +88,7 @@ fun main() {
     val waypoints = WaypointReader.readWaypoints(filePath)
 
     if (waypoints.isEmpty()) {
-        println("❌ ERRORE: Il file $filePath è vuoto o non esiste!")
+        println("ERRORE: Il file $filePath è vuoto o non esiste!")
         return
     }
 
@@ -102,5 +106,5 @@ fun main() {
 
     saveResultsToJson("output.json", maxDist, freqArea, outWaypoints)
 
-    println("✅ Analisi completata! Risultati salvati in output.json")
+    println("Analisi completata! Risultati salvati in output.json")
 }
