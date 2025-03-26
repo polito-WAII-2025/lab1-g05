@@ -61,7 +61,7 @@ fun mostFrequentedArea(waypoints: List<Waypoint>, radiusKm: Double): Pair<Waypoi
 
 // Trova i waypoint fuori dal geo-fence
 fun waypointsOutsideGeofence(waypoints: List<Waypoint>, centerLat: Double, centerLon: Double, radiusKm: Double): WaypointsOutsideGeofence {
-    var outWaypointsList = waypoints.filter { wp ->
+    val outWaypointsList = waypoints.filter { wp ->
         GeoUtils.haversine(centerLat, centerLon, wp.latitude, wp.longitude) > radiusKm
     }.distinctBy { it.latitude to it.longitude }
     val centralWaypoint = Waypoint(0, centerLat, centerLon)
