@@ -15,12 +15,12 @@ object ConfigReader {
     fun loadConfig(filePath: String): Config {
         val file = File(filePath)
         if (!file.exists()) {
-            throw IllegalArgumentException("❌ ERRORE: Il file di configurazione $filePath non esiste!")
+            throw IllegalArgumentException("ERRORE: Il file di configurazione $filePath non esiste!")
         }
         return try {
             Yaml.default.decodeFromString(Config.serializer(), file.readText())
         } catch (e: Exception) {
-            throw IllegalArgumentException("❌ ERRORE: Il file $filePath ha un formato errato! Verifica la sintassi YAML.\n Dettaglio: ${e.message}")
+            throw IllegalArgumentException("ERRORE: Il file $filePath ha un formato errato! Verifica la sintassi YAML.\n Dettaglio: ${e.message}")
         }
     }
 }
