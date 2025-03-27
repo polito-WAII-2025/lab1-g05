@@ -4,7 +4,7 @@
 <h6> Maria Rita Franceschetti s322430 </h6>
 <h6> Francesco Servente s328852</h6>
 <h6> Giorgio Galasso s319497 </h6>
-<h6> Marta Chiarenza s 328937</h6>
+<h6> Marta Chiarenza s328937</h6>
 
 
 
