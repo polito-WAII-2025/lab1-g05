@@ -1,0 +1,50 @@
+{
+    "maxDistanceFromStart": {
+        "waypoint": {
+            "timestamp": 1741530238858,
+            "latitude": 45.06206,
+            "longitude": 7.68968
+        },
+        "distanceKm": 1.9085557258919297
+    },
+    "mostFrequentedArea": {
+        "centralWaypoint": {
+            "timestamp": 1741530238619,
+            "latitude": 45.06773,
+            "longitude": 7.68485
+        },
+        "areaRadiusKm": 0.5,
+        "entriesCount": 3
+    },
+    "waypointsOutsideGeofence": {
+        "centralWaypoint": {
+            "timestamp": 0,
+            "latitude": 45.0,
+            "longitude": 7.0
+        },
+        "areaRadiusKm": 5.0,
+        "count": 4,
+        "waypoints": [
+            {
+                "timestamp": 1741530238322,
+                "latitude": 45.06728,
+                "longitude": 7.66653
+            },
+            {
+                "timestamp": 1741530238619,
+                "latitude": 45.06773,
+                "longitude": 7.68485
+            },
+            {
+                "timestamp": 1741530238636,
+                "latitude": 45.06726,
+                "longitude": 7.68617
+            },
+            {
+                "timestamp": 1741530238858,
+                "latitude": 45.06206,
+                "longitude": 7.68968
+            }
+        ]
+    }
+}
