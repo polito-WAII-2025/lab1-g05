@@ -37,7 +37,6 @@ tasks.withType<com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar> {
         attributes["Main-Class"] = "RouteAnalyzerKt"
     }
 }
-
 application {
-    mainClass.set("RouteAnalyzerKt") // Assicurati che sia il nome giusto della classe principale
+    mainClass.set("RouteAnalyzerKt")
 }

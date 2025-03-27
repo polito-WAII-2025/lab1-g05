@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="RouteAnalyzerAdditionalTests" tests="5" skipped="0" failures="0" errors="0" timestamp="2025-03-27T11:13:21" hostname="MARTACOMPUTER" time="0.022">
+  <properties/>
+  <testcase name="test mostFrequentedArea with all waypoints in the same location()" classname="RouteAnalyzerAdditionalTests" time="0.006"/>
+  <testcase name="test maxDistanceFromStart with identical waypoints()" classname="RouteAnalyzerAdditionalTests" time="0.001"/>
+  <testcase name="test maxDistanceFromStart with single waypoint()" classname="RouteAnalyzerAdditionalTests" time="0.0"/>
+  <testcase name="test waypointsOutsideGeofence with all inside()" classname="RouteAnalyzerAdditionalTests" time="0.009"/>
+  <testcase name="test waypointsOutsideGeofence with some inside and some outside()" classname="RouteAnalyzerAdditionalTests" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
