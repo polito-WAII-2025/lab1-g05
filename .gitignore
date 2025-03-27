@@ -1,2 +1,5 @@
 # Cartelle di configurazione dell'IDE (IntelliJ, JetBrains, VS Code)
 .idea/
+
+RouteAnalyzer/build/
+RouteAnalyzer/.gradle/
